@@ -1,0 +1,23 @@
+.Nav {
+  width: 100vw !important;
+  margin: 0;
+  padding: 0px 40px;
+  box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.1) !important;
+  height: 85px !important;
+  z-index: 1;
+}
+.home_nav {
+  position: relative;
+  top: -50px;
+}
+.home_nav_end {
+  position: relative;
+  top: -10px;
+}
+.home_nav img {
+  z-index: -1;
+}
+.home_nav .title {
+  position: relative;
+  left: -55px;
+}
