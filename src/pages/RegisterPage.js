@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "../styles/RegisterPage.css";
 import { FormControl, MenuItem, Select } from "@material-ui/core";
 
 const RegisterPage = () => {
+  const history = useHistory();
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,19 +16,28 @@ const RegisterPage = () => {
   const signup = (e) => {
     e.preventDefault();
     console.log(email, password);
-    fetch("http://localhost:5000/api/v1/user/signup", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name,
-        email,
-        password,
-        kitchen: selectedKitchenID,
-        dateOfBirth: "1970-01-01",
-      }),
-    }).then((value) => {
-      console.log(value);
-    });
+    if (name && email && password && selectedKitchenID) {
+      fetch("http://localhost:5000/api/v1/user/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          email,
+          password,
+          kitchen: selectedKitchenID,
+          dateOfBirth: "1970-01-01",
+        }),
+      }).then((value) => {
+        console.log(value.statusText);
+        if (value.statusText === "OK") {
+          history.push("/login");
+        } else {
+          alert("Please check your credentials!");
+        }
+      });
+    } else {
+      alert("Please fill the form!");
+    }
   };
 
   // FETCH KITCHEN DATA
@@ -78,6 +89,13 @@ const RegisterPage = () => {
                 value={email}
                 onChange={(text) => setEmail(text.target.value)}
               />
+              <input
+                name="password"
+                placeholder="Password"
+                type="password"
+                value={password}
+                onChange={(text) => setPassword(text.target.value)}
+              />
 
               <FormControl>
                 <Select
@@ -94,13 +112,6 @@ const RegisterPage = () => {
                 </Select>
               </FormControl>
 
-              <input
-                name="password"
-                placeholder="Password"
-                type="password"
-                value={password}
-                onChange={(text) => setPassword(text.target.value)}
-              />
               <button onClick={signup} className="login_btn mt-3">
                 register
               </button>

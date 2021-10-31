@@ -1,23 +1,34 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "../styles/LoginPage.css";
 
 const LoginPage = () => {
+  const history = useHistory();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const login = (e) => {
     e.preventDefault();
-    fetch("http://localhost:5000/api/v1/user/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-    }).then((value) => {
-      console.log(value);
-    });
+    if (email && password) {
+      fetch("http://localhost:5000/api/v1/user/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      }).then((value) => {
+        console.log(value.statusText);
+        if (value.statusText === "OK") {
+          history.push("/addlogs");
+        } else {
+          alert("Please check your credentials!");
+        }
+      });
+    } else {
+      alert("PLease fill the form!");
+    }
   };
 
   return (
