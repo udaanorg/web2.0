@@ -2,21 +2,9 @@ import React from "react";
 import { Col, Nav, Row, Tab } from "react-bootstrap";
 import Footer from "../components/Footer";
 import HomeNavbar from "../components/HomeNavbar";
-import "../styles/HomePage.css";
+import "../styles/GraphsPage.css";
 
-const HomePage = () => {
-const kitchen = (e) => {
-  e.preventDefault();
-  
-  fetch("http://localhost:5000/api/v1/kitchen/", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({}),
-  }).then((value) => {
-    console.log(value);
-  });
-};
-  
+const GraphsPage = () => {
   return (
     <>
       <HomeNavbar />
@@ -75,4 +63,4 @@ const kitchen = (e) => {
   );
 };
 
-export default HomePage;
+export default GraphsPage;

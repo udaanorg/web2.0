@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/RegisterPage.css";
+import { FormControl, MenuItem, Select } from "@material-ui/core";
 
 const RegisterPage = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [kitchen, setKitchen] = useState("");
+  const [kitchenData, setKitchenData] = useState([]);
+  const [selectedCity, setSelectedCity] = useState("Select City");
+  const [selectedKitchenID, setSelectedKitchenID] = useState("");
 
   const signup = (e) => {
     e.preventDefault();
@@ -18,12 +21,40 @@ const RegisterPage = () => {
         name,
         email,
         password,
-        kitchen,
+        kitchen: selectedKitchenID,
         dateOfBirth: "1970-01-01",
       }),
     }).then((value) => {
       console.log(value);
     });
+  };
+
+  // FETCH KITCHEN DATA
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:5000/api/v1/kitchen/all"
+        );
+        const json = await response.json();
+        setKitchenData(json);
+        if (selectedCity) {
+          let selectedKitchen = kitchenData.filter(
+            (city) => city.city === selectedCity
+          );
+          setSelectedKitchenID(selectedKitchen[0].id);
+          console.log(selectedKitchenID);
+        }
+        console.log(json);
+      } catch (error) {}
+    };
+
+    fetchData();
+  }, [selectedCity]);
+
+  // DISPLAY SELECTED CITY IN DROPDOWN
+  const onCityChange = (e) => {
+    setSelectedCity(e.target.value);
   };
 
   return (
@@ -47,13 +78,22 @@ const RegisterPage = () => {
                 value={email}
                 onChange={(text) => setEmail(text.target.value)}
               />
-              <input
-                name="kitchen"
-                placeholder="Kitchen no."
-                type="text"
-                value={kitchen}
-                onChange={(text) => setKitchen(text.target.value)}
-              />
+
+              <FormControl>
+                <Select
+                  variant="outlined"
+                  value={selectedCity}
+                  onChange={onCityChange}
+                >
+                  <MenuItem value="Select City">Select City</MenuItem>
+                  {kitchenData.map((data) => (
+                    <MenuItem key={data.id} value={data.city}>
+                      {data.city}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+
               <input
                 name="password"
                 placeholder="Password"

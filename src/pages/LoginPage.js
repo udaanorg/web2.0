@@ -10,10 +10,11 @@ const LoginPage = () => {
     e.preventDefault();
     fetch("http://localhost:5000/api/v1/user/login", {
       method: "POST",
-      body: {
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
         email,
         password,
-      },
+      }),
     }).then((value) => {
       console.log(value);
     });

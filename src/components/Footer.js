@@ -9,10 +9,12 @@ const Footer = ({ page }) => {
   return (
     <>
       <div
-        class={`${page === "home" ? "home_footer footer-dark" : "footer-dark"}`}
+        className={`${
+          page === "home" ? "home_footer footer-dark" : "footer-dark"
+        }`}
       >
-        <div class="row">
-          <div class="col-sm-6 col-md-3 item">
+        <div className="row">
+          <div className="col-sm-6 col-md-3 item">
             <h3>Services</h3>
             <ul>
               <li>
@@ -23,7 +25,7 @@ const Footer = ({ page }) => {
               </li>
             </ul>
           </div>
-          <div class="col-sm-6 col-md-3 item">
+          <div className="col-sm-6 col-md-3 item">
             <h3>About</h3>
             <ul>
               <li>
@@ -37,7 +39,7 @@ const Footer = ({ page }) => {
               </li>
             </ul>
           </div>
-          <div class="col-md-6 item text">
+          <div className="col-md-6 item text">
             <h3>UDAAN</h3>
             <p>
               Praesent sed lobortis mi. Suspendisse vel placerat ligula. Vivamus
@@ -45,7 +47,7 @@ const Footer = ({ page }) => {
               lectus. Aliquam in arcu eget velit pulvinar dictum vel in justo.
             </p>
           </div>
-          <div class="col item social">
+          <div className="col item social">
             <a href="#">
               <FacebookIcon className="icon" />
             </a>
@@ -60,7 +62,7 @@ const Footer = ({ page }) => {
             </a>
           </div>
         </div>
-        <p class="copyright">UDAAN © 2021</p>
+        <p className="copyright">UDAAN © 2021</p>
       </div>
     </>
   );
