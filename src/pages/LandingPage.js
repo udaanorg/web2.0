@@ -64,9 +64,11 @@ const LandingPage = () => {
               efficiently it was used and reduce wastage.
             </p>
             <br />
-            <button className="btn-explore">
-              View graphs for all kitchens
-            </button>
+            <Link to="/graphs">
+              <button className="btn-explore">
+                View graphs for all kitchens
+              </button>
+            </Link>
           </div>
         </section>
         <LandingProfiles />

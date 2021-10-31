@@ -2,7 +2,7 @@ import React from "react";
 import { Navbar } from "react-bootstrap";
 import "../styles/Navbar.css";
 
-const HomeNavbar = () => {
+const HomeNavbar = ({ page }) => {
   return (
     <div className="Nav">
       <Navbar className="home_nav">
@@ -15,8 +15,10 @@ const HomeNavbar = () => {
           />{" "}
           <span className="pb-3 title">UDAAN</span>
         </Navbar.Brand>
-        <Navbar.Collapse className="justify-content-end ">
-          <Navbar.Text className="home_nav_end">
+        <Navbar.Collapse className="justify-content-end">
+          <Navbar.Text
+            className={`${page === "graphs" ? "d-none" : "home_nav_end"}`}
+          >
             Signed in as:
             <a href="#" className="ml-2 mr-5">
               Alias

@@ -7,7 +7,7 @@ import "../styles/GraphsPage.css";
 const GraphsPage = () => {
   return (
     <>
-      <HomeNavbar />
+      <HomeNavbar page="graphs" />
       <div className="charts_container">
         <Tab.Container id="left-tabs-example" defaultActiveKey="first">
           <Row>
