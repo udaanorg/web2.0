@@ -1,3 +1,4 @@
-.charts_container {
+.charts_container,
+.logs_container {
   padding: 0 130px;
 }
