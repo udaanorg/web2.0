@@ -19,7 +19,6 @@ const LoginPage = () => {
           password,
         }),
       }).then((value) => {
-        console.log(value.statusText);
         if (value.statusText === "OK") {
           history.push("/addlogs");
         } else {

@@ -97,11 +97,12 @@ const RegisterPage = () => {
                 onChange={(text) => setPassword(text.target.value)}
               />
 
-              <FormControl>
+              <FormControl className="cities">
                 <Select
                   variant="outlined"
                   value={selectedCity}
                   onChange={onCityChange}
+                  className="city_name"
                 >
                   <MenuItem value="Select City">Select City</MenuItem>
                   {kitchenData.map((data) => (
