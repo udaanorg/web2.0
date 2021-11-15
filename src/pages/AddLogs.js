@@ -29,7 +29,7 @@ const AddLogs = () => {
       <div className="addlogs">
         <HomeNavbar />
         <div className="logs_container">
-          <h4>Select the type of Data you wish to add!</h4>
+        <h4>Select the type of Data you wish to add!</h4>
           <Tab.Container id="left-tabs-example" defaultActiveKey="first">
             <Row>
               <Col sm={3}>
@@ -42,7 +42,8 @@ const AddLogs = () => {
                   </Nav.Item>
                 </Nav>
               </Col>
-              <Col sm={9}>
+              <Col sm={1}/>
+              <Col sm={7}>
                 <Tab.Content>
                   <Tab.Pane eventKey="first">
                     <div className="">

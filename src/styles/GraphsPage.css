@@ -2,3 +2,14 @@
 .logs_container {
   padding: 0 130px;
 }
+.charts_container {
+  position: relative;
+  top: 80px;
+}
+.graph-img {
+  padding-left: 10%;
+}
+.nav-pills .nav-link,
+.nav-pills .show > .nav-link {
+  text-align: center !important;
+}

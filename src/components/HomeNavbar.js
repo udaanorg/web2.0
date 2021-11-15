@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Navbar } from "react-bootstrap";
 import "../styles/Navbar.css";
 
 const HomeNavbar = ({ page }) => {
+  // useEffect(() => {
+  //   fetch("http://localhost:5000/api/v1/user/logout", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({}),
+  //   }).then((resp) => {
+  //     console.log(resp);
+  //   });
+  // }, []);
+
   return (
     <div className="Nav">
       <Navbar className="home_nav">
@@ -20,11 +30,14 @@ const HomeNavbar = ({ page }) => {
             className={`${page === "graphs" ? "d-none" : "home_nav_end"}`}
           >
             Signed in as:
-            <a href="#" className="ml-2 mr-5">
-              Alias
+            <a href="#" className="ml-2 mr-5 text-decoration-none">
+              Kitchen1
             </a>
             <button className="btn btn-primary mr-5">Logout</button>
           </Navbar.Text>
+          <button className="btn btn-primary mr-5 home_nav_end">
+            Add Logs
+          </button>
         </Navbar.Collapse>
       </Navbar>
     </div>
